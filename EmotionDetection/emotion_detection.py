@@ -32,6 +32,14 @@ def emotion_detector(text_to_analyze: str) -> str:
             'joy': joy,
             'sadness': sadness,
         }
+
+        # retreive the most dominant emotion
+        dominant_emotion_name = ""
+        dominant_emotion_score = 0
+        for key, value in emotions_payload_response.items():
+            if (value >= dominant_emotion_score):
+                dominant_emotion_name = key
+                dominant_emotion_score = value
     elif response.status_code == 400 or response.status_code == 500:
         emotions_payload_response = {
             'anger': None,
@@ -40,15 +48,6 @@ def emotion_detector(text_to_analyze: str) -> str:
             'joy': None,
             'sadness': None,
         }
-    
-    # retreive the most dominant emotion
-
-    dominant_emotion_name = ""
-    dominant_emotion_score = 0
-    for key, value in emotions_payload_response.items():
-        if (value >= dominant_emotion_score):
-            dominant_emotion_name = key
-            dominant_emotion_score = value
 
     # print(dominant_emotion_name) 
     emotions_payload_updated =  {
