@@ -32,7 +32,7 @@ def emotion_detector(text_to_analyze: str) -> str:
             'joy': joy,
             'sadness': sadness,
         }
-    elif response.status_code = 400 or response.status_code == 500:
+    elif response.status_code == 400 or response.status_code == 500:
         emotions_payload_response = {
             'anger': None,
             'disgust': None,
