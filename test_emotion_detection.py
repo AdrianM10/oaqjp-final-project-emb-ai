@@ -18,6 +18,10 @@ class TestEmotionDetection(unittest.TestCase):
         # Test if sadness is dominant emotion
         response_sadness = emotion_detector("I am so sad about this")
         self.assertEqual(response_sadness["dominant_emotion"], "sadness")
+
+        # Test if fear is dominant emotion
+        response_fear = emotion_detector("I am really afraid that this will happen")
+        self.assertEqual(response_fear["dominant_emotion"], "fear")        
        
       
 if __name__ == '__main__':
