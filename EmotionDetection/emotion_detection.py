@@ -12,23 +12,34 @@ def emotion_detector(text_to_analyze: str) -> str:
 
     response = requests.post(url, json=input, headers=header)
 
-    response_dictionary = response.json()
+    # Check if response code is 200
+    if response.status_code == 200:
 
-    anger = response_dictionary["emotionPredictions"][0]["emotion"]["anger"]
-    disgust = response_dictionary["emotionPredictions"][0]["emotion"]["disgust"]
-    fear = response_dictionary["emotionPredictions"][0]["emotion"]["fear"]
-    joy = response_dictionary["emotionPredictions"][0]["emotion"]["joy"]
-    sadness = response_dictionary["emotionPredictions"][0]["emotion"]["sadness"]
-    
-    
-    emotions_payload_response = {
-        'anger': anger,
-        'disgust': disgust,
-        'fear': fear,
-        'joy': joy,
-        'sadness': sadness,
-    }
-    # print(emotions_payload_response)
+
+        response_dictionary = response.json()
+
+        anger = response_dictionary["emotionPredictions"][0]["emotion"]["anger"]
+        disgust = response_dictionary["emotionPredictions"][0]["emotion"]["disgust"]
+        fear = response_dictionary["emotionPredictions"][0]["emotion"]["fear"]
+        joy = response_dictionary["emotionPredictions"][0]["emotion"]["joy"]
+        sadness = response_dictionary["emotionPredictions"][0]["emotion"]["sadness"]
+        
+        
+        emotions_payload_response = {
+            'anger': anger,
+            'disgust': disgust,
+            'fear': fear,
+            'joy': joy,
+            'sadness': sadness,
+        }
+    elif response.status_code = 400 or response.status_code == 500:
+        emotions_payload_response = {
+            'anger': None,
+            'disgust': None,
+            'fear': None,
+            'joy': None,
+            'sadness': None,
+        }
     
     # retreive the most dominant emotion
 
