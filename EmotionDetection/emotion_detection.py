@@ -49,6 +49,6 @@ def emotion_detector(text_to_analyze: str) -> str:
         "dominant_emotion": dominant_emotion_name
     }
 
-    print(emotions_payload_updated)
+    return emotions_payload_updated
 
 
