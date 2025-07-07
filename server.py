@@ -24,13 +24,12 @@ def sent_emotion():
     for key, value in response.items():
         if value is None:
             return "Invalid text! Please try again!."
-        else:
-            message = f"For the given statement, the system response is 'anger':"
-            message += f"{response['anger']}, 'disgust': {response['disgust']},"
-            message += f" 'fear': {response['fear']},"
-            message += f"'joy': {response['joy']} and 'sadness': {response['sadness']}."
-            message += f"The dominant emotion is {response['dominant_emotion']}."
-            return message
+        message = f"For the given statement, the system response is 'anger':"
+        message += f"{response['anger']}, 'disgust': {response['disgust']},"
+        message += f" 'fear': {response['fear']},"
+        message += f"'joy': {response['joy']} and 'sadness': {response['sadness']}."
+        message += f"The dominant emotion is {response['dominant_emotion']}."
+        return message
 
 
 if __name__ == "__main__":
