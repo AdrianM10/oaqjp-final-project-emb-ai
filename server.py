@@ -15,7 +15,7 @@ def sent_emotion():
 
     # Check if values in dictionary are None
     for key, value in response.items():
-        if (value == None):
+        if value == None:
             return "Invalid text! Please try again!."
         else:
             return f"For the given statement, the system response is 'anger': {response['anger']}, 'disgust': {response['disgust']}, 'fear': {response['fear']}, 'joy': {response['joy']} and 'sadness': {response['sadness']}. The dominant emotion is {response['dominant_emotion']}."
