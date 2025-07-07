@@ -1,3 +1,5 @@
+
+
 from flask import Flask, render_template, request
 from EmotionDetection.emotion_detection import emotion_detector
 
@@ -20,7 +22,7 @@ def sent_emotion():
 
     # Check if values in dictionary are None
     for key, value in response.items():
-        if value == None:
+        if value is None:
             return "Invalid text! Please try again!."
         else:
             message = f"For the given statement, the system response is 'anger':"
