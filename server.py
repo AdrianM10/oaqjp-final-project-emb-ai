@@ -5,10 +5,15 @@ app = Flask("Emotion Detector")
 
 @app.route("/")
 def render_index_page():
+    """Render HTML template"""
     return render_template("index.html")
 
 @app.route("/emotionDetector")
 def sent_emotion():
+    """
+    Process input from user and return a custom message with scores
+    for each emotion and the dominant emotion
+    """
 
     text_to_analyze = request.args.get('textToAnalyze')
     response = emotion_detector(text_to_analyze)
@@ -18,7 +23,12 @@ def sent_emotion():
         if value == None:
             return "Invalid text! Please try again!."
         else:
-            return f"For the given statement, the system response is 'anger': {response['anger']}, 'disgust': {response['disgust']}, 'fear': {response['fear']}, 'joy': {response['joy']} and 'sadness': {response['sadness']}. The dominant emotion is {response['dominant_emotion']}."
+            message = f"For the given statement, the system response is 'anger':"
+            message += f"{response['anger']}, 'disgust': {response['disgust']},"
+            message += f" 'fear': {response['fear']},"
+            message += f"'joy': {response['joy']} and 'sadness': {response['sadness']}."
+            message += f"The dominant emotion is {response['dominant_emotion']}."
+            return message
 
 
 if __name__ == "__main__":
